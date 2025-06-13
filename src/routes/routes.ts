@@ -1,14 +1,10 @@
-import fastify from 'fastify'
+import { FastifyInstance } from 'fastify'
 import { db } from '../database'
 
-const app = fastify()
+export async function dietRoutes(app: FastifyInstance) {
+	app.get('/diets', async () => {
+		const diets = db('diet').select()
 
-app.get('/diets', async () => {
-	const diets = db('diet').select()
-
-	return { diets }
-})
-
-app.listen({
-	port: 3333
-}).then(() => console.log('Server On!'))
+		return { diets }
+	})
+}

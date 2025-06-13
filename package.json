@@ -28,7 +28,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/routes/routes.ts",
+    "dev": "tsx watch src/server.ts",
     "lint": "eslint . --ext .ts",
     "knex": "tsx ./node_modules/knex/bin/cli.js"
   },
