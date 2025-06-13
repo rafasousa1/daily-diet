@@ -4,7 +4,9 @@ import { env } from './env'
 
 export const app = fastify()
 
-app.register(dietRoutes)
+app.register(dietRoutes, {
+	prefix: 'diets'
+})
 
 
 app.listen({
