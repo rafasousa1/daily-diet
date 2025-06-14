@@ -10,6 +10,18 @@ export async function dietRoutes(app: FastifyInstance) {
 		return { diets }
 	})
 
+	app.get('/:id', async (req) => {
+		const getUserSchema = z.object({
+			id: z.string().uuid()
+		})
+
+		const { id } = getUserSchema.parse(req.params)
+
+		const userDiet = await db('diet').where('id', id).first()
+
+		return { userDiet }
+	})
+
 	app.post('/', async (req, res) => {
 		const createDietSchema = z.object({
 			nome: z.string(),
